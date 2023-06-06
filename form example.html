@@ -1,82 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Sign-up Form</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Open+Sans:wght@300&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <title>Sign-up Form</title>
-</head>
-
-<body>
-  <div class="container">
-    <div class="image">
-      <div class="logo">
-        <img src="images/odin.png" alt="Odin logo">
-        <span id="odin">ODIN</span>
-      </div>
-      <div class="credit">Image by&nbsp<a
-          href="https://pixabay.com/users/wikiimages-1897/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=11107">WikiImages</a>
-        &nbspfrom&nbsp<a
-          href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=11107">Pixabay</a>
-      </div>
-    </div>
-
-    <div class="form">
-      <div>
-        This is not a real online service! You know you need something like
-        this in your life to help you realize your deepest dreams.
-        Sign up <i>now</i> to get started.
-        <p></p>
-        <div class="motivation">You <i>know</i> you want to.</div>
-      </div>
-      <form>
-        <legend>Let`s do this!</legend>
-        <div class="form-container">
-          <section>
-            <label for="first_name">First Name</label>
-            <input type="text" name="first_name" required>
-            <label for="email">Email</label>
-            <input type="email" name="email" placeholder="you@example.com" required>
-            <label for="pwd">Password</label>
-            <input type="pwd" name="pwd" id="pwd" class="invalid" onkeyup="check()" required>
-            <p id="pwd_match">&nbsp</p>
-          </section>
-          <section>
-            <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" required>
-            <label for="tel">Phone number<span>(required format - 9 digits)</span></label>
-            <input type="tel" name="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" required>
-            <label for="confirm_pwd">Confirm Password</label>
-            <input type="pwd" name="confirm_pwd" id="confirm_pwd" class="invalid" onkeyup="check()" required>
-          </section>
+  <body>
+    <div class="container">
+      <div class="image">
+        <div class="logo">
+          <img src="images/odin.png" alt="Odin logo" />
+          <span id="odin">ODIN</span>
         </div>
-        <button type="submit">Create Account</button>
-      </form>
-      <div id="existing_account">Already have an account? <a href="">Log in</a></div>
-    </div>
-  </div>
-  <script>
-    let check = function () {
-      if (document.getElementById("pwd").value !== 
-      document.getElementById("confirm_pwd").value) {
-        document.getElementById("pwd_match").textContent = "Passwords do not match!";
-        document.getElementById("pwd_match").style.color = "red";
-        document.querySelectorAll(".invalid").forEach(element => {
-          element.style.border = "1.5px solid red";
-        })
-      }
-      else {
-        document.getElementById('pwd_match').textContent = "\xa0";
-        document.querySelectorAll(".invalid").forEach(element => {
-          element.style.border = "1.5px solid blueviolet";
-      })
-    }
-  }
-  </script>
-</body>
+        <div class="credit">
+          Image by&nbsp<a
+            href="https://pixabay.com/users/wikiimages-1897/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=11107"
+            >WikiImages</a
+          >
+          &nbspfrom&nbsp<a
+            href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=11107"
+            >Pixabay</a
+          >
+        </div>
+      </div>
 
+      <div class="form">
+        <div>
+          This is not a real online service! You know you need something like
+          this in your life to help you realize your deepest dreams. Sign up
+          <i>now</i> to get started.
+          <p></p>
+          <div class="motivation">You <i>know</i> you want to.</div>
+        </div>
+        <form>
+          <legend>Let`s do this!</legend>
+          <div class="form-container">
+            <section>
+              <label for="first_name">First Name*</label>
+              <input type="text" name="first_name" id="first_name" 
+                oninvalid="this.setCustomValidity('Enter your first name here')"
+                oninput="this.setCustomValidity('')"
+                required/>
+              <label for="email">Email*</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                oninvalid="this.setCustomValidity('Enter your email here (must include @)')"
+                oninput="this.setCustomValidity('')"
+                required
+              />
+              <label for="pwd">Password*</label>
+              <input
+                type="pwd"
+                name="pwd"
+                id="pwd"
+                class="invalid"
+                onkeyup="check()"
+                oninvalid="this.setCustomValidity('Enter your password here')"
+                oninput="this.setCustomValidity('')"
+                required
+              />
+              <p id="pwd_match">&nbsp</p>
+            </section>
+            <section>
+              <label for="last_name">Last Name*</label>
+              <input type="text" name="last_name" id="last_name" 
+                oninvalid="this.setCustomValidity('Enter your last name here')"
+                oninput="this.setCustomValidity('')"
+                required/>
+              <label for="tel"
+                >Phone number*<span>(required format - 9 digits)</span></label>
+              <input
+                type="tel"
+                name="tel"
+                pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
+                oninvalid="this.setCustomValidity('Enter your phone number with 9 digits here')"
+                oninput="this.setCustomValidity('')"
+                required
+              />
+              <label for="confirm_pwd">Confirm Password</label>
+              <input
+                type="pwd"
+                name="confirm_pwd"
+                id="confirm_pwd"
+                class="invalid"
+                onkeyup="check()"
+                required
+              />
+            </section>
+          </div>
+          <button type="submit">Create Account</button>
+        </form>
+        <div id="existing_account">
+          Already have an account? <a href="">Log in</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      let check = function () {
+        if (
+          document.getElementById("pwd").value !==
+          document.getElementById("confirm_pwd").value
+        ) {
+          document.getElementById("pwd_match").textContent =
+            "Passwords do not match!";
+          document.getElementById("pwd_match").style.color = "red";
+          document.querySelectorAll(".invalid").forEach((element) => {
+            element.style.border = "1.5px solid red";
+          });
+        } else {
+          document.getElementById("pwd_match").textContent = "\xa0";
+          document.querySelectorAll(".invalid").forEach((element) => {
+            element.style.border = "1.5px solid blueviolet";
+          });
+        }
+      };
+    </script>
+  </body>
 </html>
